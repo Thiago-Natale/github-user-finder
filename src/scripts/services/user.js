@@ -1,4 +1,4 @@
-import { baseUrl } from "/github-user-finder/src/scripts/variables.js";
+import { baseUrl } from "../variables.js";
 
 async function getUser(username) {
   const response = await fetch(`${baseUrl}${username}`);

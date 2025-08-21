@@ -1,4 +1,4 @@
-import { baseUrl, reposQuantity } from "/github-user-finder/src/scripts/variables.js";
+import { baseUrl, reposQuantity } from "../variables.js";
 
 async function getRepositories(username) {
   const response = await fetch(

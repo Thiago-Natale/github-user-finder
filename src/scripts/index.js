@@ -1,7 +1,7 @@
-import { getUser } from "/github-user-finder/src/scripts/services/user.js";
-import { getRepositories } from "/github-user-finder/src/scripts/services/repositories.js";
-import { user } from "/github-user-finder/src/scripts/objects/object_user.js";
-import { screen } from "/github-user-finder/src/scripts/objects/object_screen.js";
+import { getUser } from "./services/user.js";
+import { getRepositories } from "./services/repositories.js";
+import { user } from "./objects/object_user.js";
+import { screen } from "./objects/object_screen.js";
 
 const btnSearch = document.getElementById("btn-search");
 const inputSearch = document.getElementById("input-search");
