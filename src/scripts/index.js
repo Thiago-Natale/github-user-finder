@@ -2,6 +2,7 @@ import { getUser } from "./services/user.js";
 import { getRepositories } from "./services/repositories.js";
 import { user } from "./objects/object_user.js";
 import { screen } from "./objects/object_screen.js";
+import { getEvents } from "./services/events.js";
 
 const btnSearch = document.getElementById("btn-search");
 const inputSearch = document.getElementById("input-search");
@@ -33,37 +34,20 @@ function validateEmptyInput(username) {
 async function getUserData(username) {
   const userResponse = await getUser(username);
 
-  console.log(userResponse);
   if (userResponse.message === "Not Found") {
     screen.renderNotFound();
-    return
+    return;
   }
 
   const reposResponse = await getRepositories(username);
 
+  const eventsResponse = await getEvents(username);
+
   user.setInfo(userResponse);
   user.setRepositories(reposResponse);
+  user.setEvents(eventsResponse);
+
+  console.log(user);
 
   screen.renderUser(user);
-}
-
-function getUserRepos(username) {
-  getRepositories(username).then((reposData) => {
-    let reposItens = "";
-
-    reposData.forEach((repo) => {
-      reposItens += `<li><a href="${repo.html_url}" target="_blank">${repo.name}</a></li>`;
-    });
-
-    document.querySelector(
-      ".profile-data"
-    ).innerHTML += `<div class="repositories section">
-                      <h2>
-                      Repositories
-                      </h2>                                                          
-                      <ul>
-                      ${reposItens}
-                      </ul>
-                    </div>`;
-  });
 }
