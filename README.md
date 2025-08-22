@@ -43,3 +43,7 @@ https://api.github.com/users/{username}
 Endpoint para repositórios:
 
 https://api.github.com/users/{username}/repos
+
+Endpoint para eventos:
+
+https://api.github.com/users/{username}/events
